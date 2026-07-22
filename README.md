@@ -1,50 +1,142 @@
-# Welcome to your Expo app 👋
+<div align="center">
+  <h3 align="center">Subscription Management | React Native App</h3>
+</div>
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## 📋 <a name="table">Table of Contents</a>
 
-## Get started
+1. ✨ [Introduction](#introduction)
+2. ⚙️ [Tech Stack](#tech-stack)
+3. 🔋 [Features](#features)
+4. 🤸 [Quick Start](#quick-start)
 
-1. Install dependencies
 
-   ```bash
-   npm install
-   ```
+## <a name="introduction">✨ Introduction</a>
 
-2. Start the app
+Recurrly is a full-stack subscription management application designed to help users monitor and control their recurring expenses in one centralized hub. Built using a modern "Next.js-style" mobile architecture, the app features robust subscription tracking for both active and inactive charges, automated email reminders to ensure users never miss a billing date.
 
-   ```bash
-   npx expo start
-   ```
+## <a name="tech-stack">⚙️ Tech Stack</a>
 
-In the output, you'll find options to open the app in a
+### Frontend & Mobile
+* **[React Native](https://reactnative.dev/)** is a powerful framework for building native mobile applications using React. It allows for a single codebase to run on both iOS and Android while maintaining the performance and feel of a truly native app.
+* **[Expo](https://expo.dev/)** is the official framework recommended by the React Native team. It provides a robust set of tools and services—like file-based routing and EAS (Expo Application Services)—that streamline the development, building, and submission process.
+* **[TypeScript](https://www.typescriptlang.org/)** is a strongly typed programming language that builds on JavaScript. It provides static typing to catch errors early during development, improving code maintainability across the entire full-stack codebase.
+* **[NativeWind](https://www.nativewind.dev/)** allows you to style your React Native applications using **Tailwind CSS**. It brings the efficiency of utility-first CSS to mobile, enabling rapid UI development with a consistent design system.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### Backend & Database
+* **[Node.js](https://nodejs.org/)** serves as the cross-platform JavaScript runtime environment that executes the backend service, providing high performance for asynchronous API operations.
+* **[Express](https://expressjs.com/)** is a minimal and flexible Node.js web application framework. It serves as the middleware layer for the Recurrly backend, handling routing, API requests, and seamless integration with the database.
+* **[MongoDB](https://www.mongodb.com/)** is a NoSQL database used to store user data and subscription details. Its flexible document-based structure is ideal for handling the evolving data needs of a subscription management platform.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Infrastructure & Tools
+* **[Clerk](https://dashboard.clerk.com/)** provides a complete suite of authentication and user management tools. It handles secure sign-ins, session management, and integrates seamlessly with billing workflows.
+* **[PostHog](https://posthog.com/)** is an all-in-one platform for product analytics. It helps track user behavior, feature usage, and conversion rates, giving you the data needed to improve the app based on real-world usage.
+* **[CodeRabbit](https://www.coderabbit.ai/)** is an AI-powered code review assistant. It provides deep, context-aware feedback on pull requests, helping maintain high code quality and catching potential bugs before they reach production.
 
-## Get a fresh project
+## <a name="features">🔋 Features</a>
 
-When you're ready, run:
+## ✨ Key Features
+
+👉 **Subscription Dashboard**: A centralized hub to monitor all your recurring expenses at a glance, featuring a clean and intuitive interface built with NativeWind.
+
+👉 **Active & Inactive Tracking**: Easily toggle and categorize your subscriptions to see exactly where your money is going and identify unused services you can cancel.
+
+👉 **Scheduled Email Reminders**: Never get surprised by a renewal again with automated, timely notifications that alert users before a billing date arrives.
+
+👉 **Secure Authentication**: A seamless onboarding experience using Clerk, providing enterprise-grade security for user sign-ups, logins, and profile management.
+
+👉 **Native Navigation**: A custom-built tab navigation system designed to provide a fluid, high-performance experience that feels native to both iOS and Android.
+
+👉 **Full-Stack Data Persistence**: Reliable storage for all your subscription data, powered by a high-performance Node.js/Express backend and MongoDB.
+
+👉 **Monetization Ready**: Integrated billing and payment flows, allowing you to transition from a free tool to a paid service with professional-grade infrastructure.
+
+👉 **Production-Grade Analytics**: Real-time insights into user behavior and app performance via PostHog, ensuring every feature is optimized for the best user experience.
+
+And many more, including code architecture and reusability.
+
+## <a name="quick-start">🤸 Quick Start</a>
+
+Follow these steps to set up the project locally on your machine.
+
+**Prerequisites**
+
+Make sure you have the following installed on your machine:
+
+- [Git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en)
+- [npm](https://www.npmjs.com/) (Node Package Manager)
+
+**Cloning the Repository**
 
 ```bash
-npm run reset-project
+git clone https://github.com/OtaraAlex/subscriptions.git
+cd subscriptions
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+## Installation
 
-## Learn more
+ Before you begin developing your app, it's essential to set up Expo and initialize your project.
+  - Start by creating a folder for your application. Then, open your terminal and navigate to that folder. To create an Expo app, you can use:
 
-To learn more about developing your project with Expo, look at the following resources:
+  ```bash
+  npx create-expo-app@latest
+  ```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+  By default, you get a TypeScript Expo app with Expo Router configured.
 
-## Join the community
+  If you want a different starter (blank JS, blank TS, tabs, etc.), you can run:
 
-Join our community of developers creating universal apps.
+  ```bash
+  npx create-expo-app@latest --template
+  ```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+  And pick whichever template fits your workflow.
+
+  Since this repository is already created, install dependencies and start the development server:
+
+  ```bash
+  npm install
+  npx expo start
+  ```
+
+  `npx expo start` means "download (if needed) and execute Expo locally." It starts Metro Bundler, which compiles and serves your React Native code.
+
+  Once it starts, you'll see a QR code and shortcut keys in the terminal. For example:
+  - `a` opens Android
+  - `i` opens iOS Simulator (macOS)
+  - `w` opens web
+  - `r` reloads
+  - `m` opens dev menu in Expo Go / device context
+
+  We don't need to rely on heavy IDE tooling to begin. The easiest flow is using Expo Go on your phone.
+
+  Expo Go is a mobile app that lets you test React Native apps quickly by scanning a QR code. It's fast, beginner-friendly, and supports real-time updates while you code.
+
+  Open Google Play Store or Apple App Store, install **Expo Go**, then come back here and scan the QR code.
+
+  ### iOS VPN Turn OFF, and network permissions…
+
+  Now open Expo Go and scan the QR code from the terminal. The app should compile and launch.
+
+  If all is good, you'll see the starter app with two tabs: Home and Explore.
+
+## Set Up Environment Variables
+
+Create a new file named `.env` in the root of your project and add the following content:
+
+
+```env
+EXPO_PUBLIC_CLERK_PUBLISHABLE_KEY=
+POSTHOG_PROJECT_TOKEN=
+POSTHOG_HOST=https://us.i.posthog.com
+```
+
+Replace the placeholder values with your real credentials. You can get these by signing up at: [**Expo**](https://expo.dev/), [**PostHog**](https://posthog.com/) .
+
+**Running the Project**
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
