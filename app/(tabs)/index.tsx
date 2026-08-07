@@ -3,13 +3,14 @@ import "@/global.css";
 import dayjs from "dayjs";
 import { useState } from "react";
 import { styled } from "nativewind";
+import { useUser } from "@clerk/expo";
+import { usePostHog } from "posthog-react-native";
 import { Image, Text, View, FlatList } from "react-native";
 import { SafeAreaView as RNSafeAreaView } from "react-native-safe-area-context";
 
 import {
   HOME_BALANCE,
   HOME_SUBSCRIPTIONS,
-  HOME_USER,
   UPCOMING_SUBSCRIPTIONS,
 } from "@/constants/data";
 import images from "@/constants/images";
@@ -22,9 +23,35 @@ import UpcomingSubscriptionCard from "@/components/UpcomingSubscriptionCard";
 const SafeAreaView = styled(RNSafeAreaView);
 
 export default function App() {
+  const { user } = useUser();
+  const posthog = usePostHog();
   const [expandedSubscriptionId, setExpandedSubscriptionId] = useState<
     string | null
   >(null);
+
+  const handleSubscriptionPress = (
+    subscription: (typeof HOME_SUBSCRIPTIONS)[number],
+  ) => {
+    if (expandedSubscriptionId !== subscription.id) {
+      posthog.capture("subscription_details_viewed", {
+        subscription_id: subscription.id,
+        category: subscription.category,
+        billing_interval: subscription.billing,
+        subscription_status: subscription.status,
+      });
+    }
+
+    setExpandedSubscriptionId(
+      expandedSubscriptionId === subscription.id ? null : subscription.id,
+    );
+  };
+
+  // Get user display name: firstName, fullName, or email
+  const displayName =
+    user?.firstName ||
+    user?.fullName ||
+    user?.emailAddresses[0]?.emailAddress ||
+    "User";
 
   return (
     <SafeAreaView className="flex-1 bg-background p-5">
@@ -33,8 +60,13 @@ export default function App() {
           <>
             <View className="home-header">
               <View className="home-user">
-                <Image source={images.avatar} className="home-avatar" />
-                <Text className="home-user-name">{HOME_USER.name}</Text>
+                <Image
+                  source={
+                    user?.imageUrl ? { uri: user.imageUrl } : images.avatar
+                  }
+                  className="home-avatar"
+                />
+                <Text className="home-user-name">{displayName}</Text>
               </View>
 
               <Image source={icons.add} className="home-add-icon" />
@@ -81,11 +113,7 @@ export default function App() {
           <SubscriptionCard
             {...item}
             expanded={expandedSubscriptionId === item.id}
-            onPress={() =>
-              setExpandedSubscriptionId((currentId) =>
-                currentId === item.id ? null : item.id,
-              )
-            }
+            onPress={() => handleSubscriptionPress(item)}
           />
         )}
         extraData={expandedSubscriptionId}
